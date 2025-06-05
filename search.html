@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARACETAMOLFIX - Search</title>
+
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body style="background-color: black; color: white; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px 30px;">
+    <div class="container-fluid" style="display: flex; align-items: center; justify-content: space-between;">
+      <a class="navbar-brand" href="index.html">
+        <img src="apphead.png" alt="PARACETAMOLFIX Logo" class="logo-img" />
+      </a>
+
+      <ul class="navbar-nav" style="display: flex; gap: 20px;">
+        <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactus.html">CONTACT</a></li>
+        <li class="nav-item"><a class="nav-link active" href="search.html">SEARCH</a></li>
+        <li class="nav-item"><a class="nav-link" href="loginforMusify.html">LOGIN</a></li>
+        <li class="nav-item"><a class="nav-link" href="planforMusify.html">PREMIUM</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="container" style="text-align: center; padding: 40px 20px;">
+    <h1 style="color: #69ccd5;">Search Movies</h1>
+    <p style="color: #aaa;">Find and watch your favorite movies</p>
+
+    <form id="searchForm" style="margin: 30px auto;">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Type a movie name..."
+        style="width: 60%; padding: 10px; border-radius: 8px; font-size: 1rem; border: none;"
+      />
+      <button
+        type="submit"
+        style="padding: 10px 20px; border-radius: 8px; background-color: #69ccd5; color: #000; border: none; margin-left: 10px; font-weight: bold;"
+      >
+        Search
+      </button>
+    </form>
+
+    <!-- Results -->
+    <div id="results" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px;"></div>
+  </main>
+
+  <footer style="text-align: center; padding: 20px; background-color: #111; color: #777;">
+    <p>&copy; PARACETAMOLFIX 2025. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const movies = [
+      { title: "Final Destination", img: "finaldestination.jpg" },
+      { title: "Blade Runner", img: "bladerunner.jpg" },
+      { title: "Transformers", img: "transformers.jpg" },
+      { title: "Avatar", img: "avatar.jpg" },
+      { title: "Godzilla", img: "godzilla.jpg" },
+      { title: "Pulp Fiction", img: "pulp.jpg" },
+      { title: "Oppenheimer", img: "oppenheimer.jpg" },
+      { title: "Interstellar", img: "interstellar.jpg" }
+    ];
+
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+    const resultsDiv = document.getElementById("results");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const query = input.value.trim().toLowerCase();
+      resultsDiv.innerHTML = "";
+
+      const filtered = movies.filter(m => m.title.toLowerCase().includes(query));
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = "<p>No movies found.</p>";
+        return;
+      }
+
+      filtered.forEach(movie => {
+        const card = document.createElement("div");
+        card.className = "movie-card";
+        card.innerHTML = `
+          <div class="movie-thumb">
+            <img src="${movie.img}" alt="${movie.title}">
+            <div class="movie-overlay">
+              <button><i class="bi bi-play-fill"></i></button>
+            </div>
+          </div>
+          <div class="movie-title">${movie.title}</div>
+        `;
+        resultsDiv.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>

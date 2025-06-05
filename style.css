@@ -1,0 +1,115 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #69ccd5;
+  font-size: 2.5em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+p {
+  color: white;
+  font-size: 1.1em;
+  padding: 0 20px;
+}
+
+.navbar {
+  border-bottom: 2px solid #69ccd5;
+}
+
+.navbar-brand img {
+  border-radius: 12px;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #ffffff !important;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #69ccd5 !important;
+}
+
+.container {
+  padding: 30px 15px;
+}
+
+/* Movie Card Styles */
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-title {
+  text-align: center;
+  font-size: 1.1em;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Overlay and Play Button */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay button {
+  font-size: 2em;
+  background-color: #69ccd5;
+  border: none;
+  color: #000;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #111;
+  color: white;
+  font-size: 0.9em;
+}
+
+/* Logo styling for all pages */
+.logo-img {
+  height: 60px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
